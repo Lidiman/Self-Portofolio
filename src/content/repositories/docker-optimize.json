@@ -1,0 +1,12 @@
+{
+  "name": "Docker-Optimize",
+  "fullName": "Lidiman/Docker-Optimize",
+  "description": "Production multi-stage build templates, slim base images, and GitHub CI/CD vulnerability scanning pipeline.",
+  "category": "DevOps/Cloud",
+  "language": "Shell",
+  "url": "https://github.com/Lidiman/Docker-Optimize",
+  "isPublic": true,
+  "isFeatured": true,
+  "stars": 24,
+  "tags": ["Docker", "CI/CD", "Security", "Shell", "DevOps"]
+}

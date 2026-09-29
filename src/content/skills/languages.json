@@ -1,0 +1,11 @@
+{
+  "category": "Development & Languages",
+  "items": [
+    { "name": "TypeScript / JavaScript", "level": "Advanced", "icon": "file-code", "highlight": true, "experience": "Astro, React, Node.js, modern web architecture" },
+    { "name": "Go (Golang)", "level": "Proficient", "icon": "cpu", "highlight": true, "experience": "High-throughput microservices & system tooling" },
+    { "name": "PHP & Laravel", "level": "Advanced", "icon": "layers", "highlight": true, "experience": "RESTful API, ORM, multi-role auth, queuing" },
+    { "name": "C / C++", "level": "Proficient", "icon": "binary", "highlight": false, "experience": "Embedded firmware, microcontroller control" },
+    { "name": "Python", "level": "Proficient", "icon": "code", "highlight": false, "experience": "Automation scripts, data parsing, CLI utilities" },
+    { "name": "SQL (MySQL / PostgreSQL)", "level": "Proficient", "icon": "database", "highlight": false, "experience": "Schema design, index tuning, query optimization" }
+  ]
+}

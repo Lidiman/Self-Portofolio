@@ -1,0 +1,12 @@
+{
+  "name": "LeLiLu",
+  "fullName": "Lidiman/LeLiLu",
+  "description": "Interactive modern web platform and dynamic UI experiments.",
+  "category": "TypeScript/JS",
+  "language": "TypeScript",
+  "url": "https://github.com/Lidiman/LeLiLu",
+  "isPublic": true,
+  "isFeatured": false,
+  "stars": 5,
+  "tags": ["TypeScript", "Web", "Frontend", "UI"]
+}

@@ -1,0 +1,12 @@
+{
+  "name": "Task-Management",
+  "fullName": "Lidiman/Task-Management",
+  "description": "Cross-platform mobile task and productivity app built with Flutter and Firebase.",
+  "category": "Mobile/Flutter",
+  "language": "Dart",
+  "url": "https://github.com/Lidiman/Task-Management",
+  "isPublic": true,
+  "isFeatured": false,
+  "stars": 6,
+  "tags": ["Flutter", "Dart", "Mobile", "Firebase", "Task"]
+}

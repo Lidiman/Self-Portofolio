@@ -1,0 +1,12 @@
+{
+  "name": "Code-Forge",
+  "fullName": "Lidiman/Code-Forge",
+  "description": "Code snippet repository and execution playground built with Laravel and sandboxed runner.",
+  "category": "PHP/Laravel",
+  "language": "PHP",
+  "url": "https://github.com/Lidiman/Code-Forge",
+  "isPublic": true,
+  "isFeatured": false,
+  "stars": 4,
+  "tags": ["PHP", "Laravel", "Snippet", "Runner"]
+}

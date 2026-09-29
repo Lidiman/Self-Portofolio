@@ -1,0 +1,24 @@
+{
+  "name": "Nabil Aswangga Hugobama",
+  "preferredName": "Bama",
+  "handle": "Lidiman",
+  "headline": "DevOps & Cloud-Native Enthusiast | Systems & Infrastructure Builder",
+  "subheadline": "SIJA Student at SMK Telkom Sidoarjo (LKS Cloud Computing Preparation), Musician & Embedded Tinkerer.",
+  "about": "Fokus pada arsitektur cloud-native, otomasi CI/CD, Linux system administration, dan embedded systems (ESP32). Aktif sebagai gitaris di band SPBU.",
+  "avatar": {
+    "sourcePath": "/home/hugo/Obsidian/Project/Media/WhatsApp Image 2026-09-13 at 01.53.31.jpeg",
+    "targetPath": "src/assets/avatar.webp",
+    "alt": "Nabil Aswangga Hugobama (Bama)"
+  },
+  "contacts": {
+    "github": "https://github.com/Lidiman",
+    "email": "bamaground@gmail.com",
+    "instagram": "https://instagram.com/never.bama"
+  },
+  "status": {
+    "uptime": "99.98%",
+    "distro": "Arch Linux (7.1.6-arch1-1)",
+    "currentFocus": "Cloud-Native Infrastructure & ESP32 Microcontrollers",
+    "availability": "Open for Collaboration & Projects"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "name": "Asentinel",
+  "fullName": "Lidiman/Asentinel",
+  "description": "Open-source monitoring & observability platform for modern Linux infrastructure & container fleet.",
+  "category": "DevOps/Cloud",
+  "language": "Go",
+  "url": "https://github.com/Lidiman/Asentinel",
+  "isPublic": true,
+  "isFeatured": true,
+  "stars": 12,
+  "tags": ["Go", "Docker", "Prometheus", "Monitoring", "Observability"]
+}

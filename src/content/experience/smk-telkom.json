@@ -1,0 +1,14 @@
+{
+  "role": "Sistem Informatika, Jaringan, dan Aplikasi (SIJA)",
+  "organization": "SMK Telkom Sidoarjo",
+  "period": "2023 - Present",
+  "location": "Sidoarjo, Jawa Timur",
+  "type": "education",
+  "description": "Program keahlian 4 tahun berfokus pada infrastruktur jaringan, cloud computing, administrasi server Linux, dan rekayasa perangkat lunak enterprise.",
+  "points": [
+    "Mempelajari arsitektur jaringan tingkat lanjut, routing dynamic, dan Linux enterprise server",
+    "Membangun berbagai lab virtualisasi berbasis Proxmox, Docker, dan Kubernetes",
+    "Mempertahankan prestasi akademik dan teknis di bidang infrastruktur cloud"
+  ],
+  "order": 1
+}

@@ -1,0 +1,9 @@
+{
+  "category": "Tools & Platforms",
+  "items": [
+    { "name": "Git & GitHub CLI", "level": "Advanced", "icon": "git-pull-request", "highlight": true, "experience": "Complex rebase, worktrees, multi-repo automation" },
+    { "name": "Neovim & Terminal Tooling", "level": "Advanced", "icon": "terminal", "highlight": true, "experience": "Custom Lua config, tmux, zsh, Arch power user" },
+    { "name": "Cloudflare Pages & DNS", "level": "Proficient", "icon": "cloud-lightning", "highlight": false, "experience": "Edge routing, static deploy, zero-trust tunnels" },
+    { "name": "Postman & API Testing", "level": "Proficient", "icon": "send", "highlight": false, "experience": "Automated test collections & contract validation" }
+  ]
+}

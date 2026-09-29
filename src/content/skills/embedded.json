@@ -1,0 +1,9 @@
+{
+  "category": "Embedded & Hardware",
+  "items": [
+    { "name": "ESP32 (S3 / C3)", "level": "Advanced", "icon": "cpu", "highlight": true, "experience": "FreeRTOS, camera module, Wi-Fi/BLE telemetry" },
+    { "name": "Arduino & PlatformIO", "level": "Proficient", "icon": "circuit-board", "highlight": true, "experience": "Custom firmware & sensor interfacing" },
+    { "name": "MIDI & Audio Electronics", "level": "Proficient", "icon": "music", "highlight": false, "experience": "Custom pedalboards, USB-MIDI microcontrollers" },
+    { "name": "Protocols (I2C, SPI, UART)", "level": "Proficient", "icon": "radio", "highlight": false, "experience": "Low-level hardware communication busses" }
+  ]
+}

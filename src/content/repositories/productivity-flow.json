@@ -1,0 +1,12 @@
+{
+  "name": "Productivity-Flow",
+  "fullName": "Lidiman/Productivity-Flow",
+  "description": "High-velocity keyboard-centric task coordination and kanban workspace engine.",
+  "category": "TypeScript/JS",
+  "language": "TypeScript",
+  "url": "https://github.com/Lidiman/Productivity-Flow",
+  "isPublic": true,
+  "isFeatured": true,
+  "stars": 19,
+  "tags": ["TypeScript", "React", "TailwindCSS", "Zustand", "Kanban"]
+}

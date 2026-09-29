@@ -1,0 +1,12 @@
+{
+  "name": "EDITH",
+  "fullName": "Lidiman/EDITH",
+  "description": "Personal desktop automation suite and voice/text assistant pipeline in Python.",
+  "category": "Python",
+  "language": "Python",
+  "url": "https://github.com/Lidiman/EDITH",
+  "isPublic": true,
+  "isFeatured": false,
+  "stars": 9,
+  "tags": ["Python", "Automation", "Assistant", "CLI"]
+}

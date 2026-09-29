@@ -1,0 +1,12 @@
+{
+  "name": "Techfest-CloudNative",
+  "fullName": "Lidiman/techfest-cloud-native",
+  "description": "Microservices demo deployment on Kubernetes with Helm charts, Ingress, and Prometheus metrics exporter.",
+  "category": "DevOps/Cloud",
+  "language": "Go",
+  "url": "https://github.com/Lidiman/techfest-cloud-native",
+  "isPublic": true,
+  "isFeatured": false,
+  "stars": 7,
+  "tags": ["Kubernetes", "Helm", "Go", "CloudNative", "Microservices"]
+}

@@ -1,0 +1,12 @@
+{
+  "name": "BandBuddy",
+  "fullName": "Lidiman/BandBuddy",
+  "description": "Smart rehearsal & gig management platform with chord transposition & setlist orchestration for musicians.",
+  "category": "PHP/Laravel",
+  "language": "PHP",
+  "url": "https://github.com/Lidiman/BandBuddy",
+  "isPublic": true,
+  "isFeatured": true,
+  "stars": 8,
+  "tags": ["Laravel", "PHP", "MySQL", "TailwindCSS", "Music"]
+}

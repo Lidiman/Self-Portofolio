@@ -1,0 +1,12 @@
+{
+  "name": "MIDI-Foot-Controller",
+  "fullName": "Lidiman/midi-controller",
+  "description": "Custom programmable DIY guitar pedalboard & USB-MIDI controller running on ESP32-C3.",
+  "category": "C/C++",
+  "language": "C++",
+  "url": "https://github.com/Lidiman/midi-controller",
+  "isPublic": true,
+  "isFeatured": false,
+  "stars": 11,
+  "tags": ["ESP32-C3", "MIDI", "C++", "Audio", "Hardware"]
+}

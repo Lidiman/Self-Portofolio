@@ -1,0 +1,12 @@
+{
+  "name": "UKL",
+  "fullName": "Lidiman/UKL",
+  "description": "Uji Kompetensi Keahlian web application project with full CRUD, reporting, and transaction logging.",
+  "category": "PHP/Laravel",
+  "language": "PHP",
+  "url": "https://github.com/Lidiman/UKL",
+  "isPublic": true,
+  "isFeatured": false,
+  "stars": 2,
+  "tags": ["PHP", "Laravel", "UKL", "School", "Web"]
+}

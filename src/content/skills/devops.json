@@ -1,0 +1,11 @@
+{
+  "category": "DevOps & Cloud",
+  "items": [
+    { "name": "Docker & Containerization", "level": "Advanced", "icon": "container", "highlight": true, "experience": "Production multi-stage build & orchestration" },
+    { "name": "Kubernetes & Cloud-Native", "level": "Proficient", "icon": "cloud", "highlight": true, "experience": "LKS Cloud Computing & cluster administration" },
+    { "name": "Linux Systems (Arch / Debian)", "level": "Advanced", "icon": "terminal", "highlight": true, "experience": "Kernel tuning, systemd services, daily driver" },
+    { "name": "CI/CD (GitHub Actions)", "level": "Advanced", "icon": "git-branch", "highlight": true, "experience": "Automated test, lint, security scanning, and deployment" },
+    { "name": "Nginx & Reverse Proxy", "level": "Proficient", "icon": "server", "highlight": false, "experience": "SSL termination, load balancing, caching" },
+    { "name": "Infrastructure as Code", "level": "Familiar", "icon": "code-2", "highlight": false, "experience": "Terraform & configuration automation" }
+  ]
+}

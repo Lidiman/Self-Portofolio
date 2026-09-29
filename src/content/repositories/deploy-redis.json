@@ -1,0 +1,12 @@
+{
+  "name": "Deploy-Redis",
+  "fullName": "Lidiman/Deploy-Redis",
+  "description": "Production-ready automated Redis standalone & cluster deployment recipe with Docker Compose & backup scripts.",
+  "category": "DevOps/Cloud",
+  "language": "Docker",
+  "url": "https://github.com/Lidiman/Deploy-Redis",
+  "isPublic": true,
+  "isFeatured": false,
+  "stars": 6,
+  "tags": ["Docker", "Redis", "DevOps", "Database"]
+}

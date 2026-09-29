@@ -1,0 +1,14 @@
+{
+  "role": "LKS Cloud Computing Candidate",
+  "organization": "Lomba Kompetensi Siswa (LKS)",
+  "period": "2024 - Present",
+  "location": "Jawa Timur, Indonesia",
+  "type": "achievement",
+  "description": "Persiapan intensif kompetisi LKS Cloud Computing dengan skenario deployment multi-tier, high-availability, container orchestration, dan server hardening.",
+  "points": [
+    "Praktik live-scenario konfigurasi cluster Kubernetes, autoscaling, dan zero-downtime rolling update",
+    "Implementasi automated CI/CD pipeline dengan quality gate dan security scans",
+    "Optimasi latensi jaringan dan failover strategi pada multi-region cloud setup"
+  ],
+  "order": 2
+}

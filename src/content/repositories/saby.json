@@ -1,0 +1,12 @@
+{
+  "name": "SABY",
+  "fullName": "Lidiman/SABY",
+  "description": "Static web portfolio and project gallery showcase.",
+  "category": "TypeScript/JS",
+  "language": "JavaScript",
+  "url": "https://github.com/Lidiman/SABY",
+  "isPublic": true,
+  "isFeatured": false,
+  "stars": 3,
+  "tags": ["JavaScript", "HTML", "CSS", "Showcase"]
+}

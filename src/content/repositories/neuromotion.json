@@ -1,0 +1,12 @@
+{
+  "name": "NeuroMotion",
+  "fullName": "Lidiman/NeuroMotion",
+  "description": "Early-warning microsleep and driver fatigue detection system using ESP32-S3 Camera and 6-DOF IMU.",
+  "category": "C/C++",
+  "language": "C++",
+  "url": "https://github.com/Lidiman/NeuroMotion",
+  "isPublic": true,
+  "isFeatured": true,
+  "stars": 15,
+  "tags": ["ESP32-S3", "FreeRTOS", "C++", "EdgeAI", "IoT"]
+}
