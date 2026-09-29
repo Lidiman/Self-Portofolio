@@ -1,0 +1,32 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import BentoGrid from '../components/BentoGrid.astro';
+import TerminalWidget from '../components/TerminalWidget.astro';
+import RepoExplorer from '../components/RepoExplorer.astro';
+import AudioEasterEgg from '../components/AudioEasterEgg.astro';
+import SkillsSection from '../components/SkillsSection.astro';
+import ExperienceSection from '../components/ExperienceSection.astro';
+import Footer from '../components/Footer.astro';
+import profile from '../data/profile.json';
+
+const pageTitle = `${profile.name} (${profile.preferredName}) | ${profile.headline}`;
+const pageDesc = `${profile.about} Explore cloud-native systems, ESP32 IoT, and repositories.`;
+---
+
+<Layout title={pageTitle} description={pageDesc}>
+  <Header />
+  
+  <main id="main-content" class="relative z-10 space-y-4">
+    <Hero />
+    <BentoGrid />
+    <TerminalWidget />
+    <RepoExplorer />
+    <AudioEasterEgg />
+    <SkillsSection />
+    <ExperienceSection />
+  </main>
+
+  <Footer />
+</Layout>

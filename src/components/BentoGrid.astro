@@ -1,0 +1,149 @@
+---
+import { getCollection } from 'astro:content';
+import { Github, ExternalLink, Activity, Music, Cpu, Box, Layout, ArrowUpRight } from 'lucide-astro';
+
+const allProjects = await getCollection('projects');
+const featuredProjects = allProjects
+  .filter((p) => p.data.featured)
+  .sort((a, b) => a.data.order - b.data.order);
+
+const iconMap = {
+  activity: Activity,
+  music: Music,
+  cpu: Cpu,
+  box: Box,
+  layout: Layout,
+};
+---
+
+<section id="projects" class="py-16 md:py-24 border-t border-white/5 relative">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Section Header -->
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+      <div>
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-cyan-950/40 border border-cyan-500/20 text-cyan-400 text-xs font-mono mb-3">
+          <span class="text-emerald-400">01.</span> FEATURED SYSTEMS & APPS
+        </div>
+        <h2 class="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">
+          Bento Project Showcase
+        </h2>
+        <p class="text-sm sm:text-base text-slate-400 mt-2 max-w-xl">
+          Core engineering highlights spanning low-overhead cloud observability, embedded IoT edge AI, and high-velocity web tooling.
+        </p>
+      </div>
+
+      <a
+        href="#archive"
+        class="inline-flex items-center gap-1.5 text-xs font-mono text-cyan-400 hover:text-cyan-300 transition-colors"
+      >
+        View All 14 Repositories &rarr;
+      </a>
+    </div>
+
+    <!-- Bento Grid Layout -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {featuredProjects.map((project, idx) => {
+        const IconComponent = iconMap[project.data.icon as keyof typeof iconMap] || Activity;
+        const isLarge = idx === 0 || idx === 1;
+
+        return (
+          <div
+            class={`bento-card rounded-2xl p-6 sm:p-7 flex flex-col justify-between group ${
+              isLarge ? 'md:col-span-1 lg:col-span-1' : ''
+            }`}
+          >
+            <div>
+              <!-- Header with Category & Links -->
+              <div class="flex items-center justify-between gap-2 mb-4">
+                <div class="flex items-center gap-2.5">
+                  <div class="p-2 rounded-xl bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 group-hover:scale-110 transition-transform">
+                    <IconComponent class="w-5 h-5" />
+                  </div>
+                  <span class="text-xs font-mono uppercase tracking-wider text-slate-400 px-2 py-0.5 rounded bg-white/5">
+                    {project.data.category}
+                  </span>
+                </div>
+
+                <div class="flex items-center gap-1.5">
+                  {project.data.repoUrl && (
+                    <a
+                      href={project.data.repoUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`GitHub repository for ${project.data.title}`}
+                      class="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white transition-colors"
+                    >
+                      <Github class="w-4 h-4" />
+                    </a>
+                  )}
+                  {project.data.demoUrl && (
+                    <a
+                      href={project.data.demoUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`Live demo for ${project.data.title}`}
+                      class="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-slate-400 hover:text-cyan-400 transition-colors"
+                    >
+                      <ExternalLink class="w-4 h-4" />
+                    </a>
+                  )}
+                </div>
+              </div>
+
+              <!-- Title & Tagline -->
+              <h3 class="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors mb-1.5 flex items-center gap-1.5">
+                {project.data.title}
+                <ArrowUpRight class="w-4 h-4 opacity-0 group-hover:opacity-100 -translate-x-1 group-hover:translate-x-0 transition-all text-cyan-400" />
+              </h3>
+              <p class="text-xs font-mono text-cyan-400/90 mb-3">
+                {project.data.tagline}
+              </p>
+
+              <!-- Description -->
+              <p class="text-xs sm:text-sm text-slate-300/90 leading-relaxed mb-4">
+                {project.data.description}
+              </p>
+
+              <!-- Metrics -->
+              {project.data.metrics && (
+                <div class="mb-4 flex flex-wrap gap-1.5">
+                  {project.data.metrics.map((metric) => (
+                    <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-emerald-950/40 text-emerald-300 border border-emerald-500/20">
+                      ⚡ {metric}
+                    </span>
+                  ))}
+                </div>
+              )}
+
+              <!-- Highlights -->
+              <ul class="space-y-1.5 mb-5 text-xs text-slate-400">
+                {project.data.highlights.map((item) => (
+                  <li class="flex items-start gap-2">
+                    <span class="text-cyan-400 mt-0.5">›</span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <!-- Footer: Tags & Role -->
+            <div class="pt-4 border-t border-white/5 flex flex-wrap items-center justify-between gap-2">
+              <div class="flex flex-wrap gap-1.5">
+                {project.data.tags.map((tag) => (
+                  <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-white/5 text-slate-300">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+              <span class="text-[10px] font-mono text-slate-500">
+                {project.data.role}
+              </span>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+
+  </div>
+</section>

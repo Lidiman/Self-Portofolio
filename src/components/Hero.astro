@@ -1,0 +1,156 @@
+---
+import { Terminal, Github, Mail, Instagram, Cpu, Server, ShieldCheck } from 'lucide-astro';
+import profile from '../data/profile.json';
+---
+
+<section class="relative pt-12 pb-16 md:pt-20 md:pb-24 overflow-hidden">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+      
+      <!-- Left: Bio & Highlights (Col 7) -->
+      <div class="lg:col-span-7 space-y-6 text-left">
+        
+        <!-- Live status chip -->
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-950/40 border border-cyan-500/20 text-cyan-300 text-xs font-mono">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span>{profile.status.distro}</span>
+          <span class="text-slate-500">•</span>
+          <span class="text-emerald-400">{profile.status.availability}</span>
+        </div>
+
+        <!-- Headline & Name -->
+        <div class="space-y-2">
+          <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white">
+            Hi, I'm <span class="bg-gradient-to-r from-cyan-400 via-teal-300 to-emerald-400 bg-clip-text text-transparent">{profile.preferredName}</span>
+          </h1>
+          <p class="text-lg sm:text-xl font-medium text-slate-300">
+            {profile.headline}
+          </p>
+        </div>
+
+        <!-- Subheadline & About -->
+        <p class="text-sm sm:text-base text-slate-400 max-w-2xl leading-relaxed">
+          {profile.about}
+        </p>
+
+        <!-- Competency Badges -->
+        <div class="flex flex-wrap gap-2 pt-2">
+          <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-xs font-mono text-slate-300">
+            <Server class="w-3.5 h-3.5 text-cyan-400" />
+            LKS Cloud Computing
+          </span>
+          <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-xs font-mono text-slate-300">
+            <Cpu class="w-3.5 h-3.5 text-emerald-400" />
+            ESP32 Embedded IoT
+          </span>
+          <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-xs font-mono text-slate-300">
+            <ShieldCheck class="w-3.5 h-3.5 text-amber-400" />
+            SIJA SMK Telkom Sidoarjo
+          </span>
+        </div>
+
+        <!-- CTAs -->
+        <div class="flex flex-wrap items-center gap-3 pt-4">
+          <a
+            href="#projects"
+            class="px-5 py-2.5 rounded-lg bg-gradient-to-r from-cyan-500 to-emerald-500 text-slate-950 font-medium text-sm hover:opacity-90 transition-opacity shadow-lg shadow-cyan-500/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
+          >
+            Explore Projects
+          </a>
+          <a
+            href="#terminal"
+            class="px-4 py-2.5 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-slate-200 text-sm font-mono flex items-center gap-2 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
+          >
+            <Terminal class="w-4 h-4 text-cyan-400" />
+            Interactive Terminal
+          </a>
+          <div class="flex items-center gap-2 pl-2 border-l border-white/10">
+            <a
+              href={profile.contacts.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub Profile"
+              class="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-slate-400 hover:text-cyan-400 transition-colors"
+            >
+              <Github class="w-4 h-4" />
+            </a>
+            <a
+              href={`mailto:${profile.contacts.email}`}
+              aria-label="Send Email"
+              class="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-slate-400 hover:text-emerald-400 transition-colors"
+            >
+              <Mail class="w-4 h-4" />
+            </a>
+            <a
+              href={profile.contacts.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram Profile"
+              class="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-slate-400 hover:text-pink-400 transition-colors"
+            >
+              <Instagram class="w-4 h-4" />
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Bento Profile Card (Col 5) -->
+      <div class="lg:col-span-5">
+        <div class="bento-card rounded-2xl p-6 relative overflow-hidden shadow-2xl">
+          <!-- Subtle top gradient accent -->
+          <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-cyan-500 via-teal-400 to-emerald-400"></div>
+          
+          <div class="flex items-start gap-4 mb-5">
+            <div class="relative group">
+              <img
+                src="/avatar.webp"
+                alt={profile.avatar.alt}
+                width="84"
+                height="84"
+                class="w-20 h-20 sm:w-22 sm:h-22 rounded-2xl object-cover border border-cyan-500/30 shadow-md group-hover:scale-105 transition-transform"
+                loading="eager"
+              />
+              <span class="absolute -bottom-1 -right-1 w-4 h-4 rounded-full bg-emerald-500 border-2 border-[#090d16]" title="Online / Active"></span>
+            </div>
+            <div class="space-y-1">
+              <h2 class="text-lg font-bold text-white tracking-tight">{profile.name}</h2>
+              <p class="text-xs font-mono text-cyan-400">@{profile.handle} • 17 y.o</p>
+              <p class="text-xs text-slate-400 leading-tight">SMK Telkom Sidoarjo (SIJA 4-Year Program)</p>
+            </div>
+          </div>
+
+          <!-- Quick System Metrics Panel -->
+          <div class="bg-black/30 rounded-xl p-3.5 border border-white/5 space-y-2.5 font-mono text-xs">
+            <div class="flex items-center justify-between text-slate-400 border-b border-white/5 pb-2">
+              <span class="flex items-center gap-1.5 text-slate-300">
+                <span class="text-cyan-400">⚡</span> System Host
+              </span>
+              <span class="text-slate-200 font-semibold">bama-archlinux</span>
+            </div>
+            <div class="flex items-center justify-between text-slate-400 border-b border-white/5 pb-2">
+              <span class="flex items-center gap-1.5 text-slate-300">
+                <span class="text-emerald-400">●</span> Uptime
+              </span>
+              <span class="text-emerald-400 font-semibold">{profile.status.uptime}</span>
+            </div>
+            <div class="flex items-center justify-between text-slate-400 border-b border-white/5 pb-2">
+              <span class="flex items-center gap-1.5 text-slate-300">
+                <span class="text-amber-400">🎯</span> Current Focus
+              </span>
+              <span class="text-slate-200 text-[11px] text-right truncate max-w-[160px] sm:max-w-[190px]">
+                {profile.status.currentFocus}
+              </span>
+            </div>
+            <div class="flex items-center justify-between text-slate-400">
+              <span class="flex items-center gap-1.5 text-slate-300">
+                <span class="text-purple-400">🎸</span> Band Activity
+              </span>
+              <span class="text-purple-300 font-semibold">SPBU Lead Guitar</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

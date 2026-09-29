@@ -1,0 +1,77 @@
+---
+import { Github, Mail, Instagram, ArrowUp } from 'lucide-astro';
+import profile from '../data/profile.json';
+---
+
+<footer class="border-t border-white/5 bg-[#070a11] py-12 relative font-mono text-xs text-slate-400">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center justify-between pb-8 border-b border-white/5">
+      
+      <!-- Left Info -->
+      <div class="md:col-span-6 space-y-2 text-left">
+        <div class="flex items-center gap-2 text-white font-bold text-sm">
+          <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+          {profile.name} (@{profile.handle})
+        </div>
+        <p class="text-xs text-slate-400 max-w-md">
+          {profile.headline}. Dedicated to clean systems architecture and responsive interfaces.
+        </p>
+        <p class="text-[11px] text-slate-500">
+          Built with Astro 5, Tailwind CSS 4, and Web Audio API. 0kB blocking runtime payload.
+        </p>
+      </div>
+
+      <!-- Right Contacts & Back To Top -->
+      <div class="md:col-span-6 flex flex-col md:items-end gap-3">
+        <div class="flex items-center gap-3">
+          <a
+            href={profile.contacts.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white transition-colors"
+            aria-label="GitHub Profile"
+          >
+            <Github class="w-4 h-4" />
+          </a>
+          <a
+            href={`mailto:${profile.contacts.email}`}
+            class="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white transition-colors"
+            aria-label="Send Email"
+          >
+            <Mail class="w-4 h-4" />
+          </a>
+          <a
+            href={profile.contacts.instagram}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-slate-300 hover:text-pink-400 transition-colors"
+            aria-label="Instagram Profile"
+          >
+            <Instagram class="w-4 h-4" />
+          </a>
+          <a
+            href="#"
+            class="flex items-center gap-1 px-3 py-2 rounded-lg bg-white/5 hover:bg-white/10 text-slate-300 hover:text-cyan-400 transition-colors text-xs"
+            aria-label="Back to Top"
+          >
+            <span>Top</span>
+            <ArrowUp class="w-3.5 h-3.5" />
+          </a>
+        </div>
+
+        <div class="text-[11px] text-slate-500">
+          Arch Linux Host • {profile.status.uptime} Uptime
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Copyright Bar -->
+    <div class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-2 text-[11px] text-slate-500">
+      <p>&copy; {new Date().getFullYear()} Nabil Aswangga Hugobama. All rights reserved.</p>
+      <p class="flex items-center gap-1">
+        Crafted with precision for Cloud & Sound.
+      </p>
+    </div>
+  </div>
+</footer>

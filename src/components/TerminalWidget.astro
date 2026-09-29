@@ -1,0 +1,306 @@
+---
+import { CornerDownLeft } from 'lucide-astro';
+import profile from '../data/profile.json';
+---
+
+<section id="terminal" class="py-16 md:py-24 border-t border-white/5 relative">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Header -->
+    <div class="text-center max-w-2xl mx-auto mb-10">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-cyan-950/40 border border-cyan-500/20 text-cyan-400 text-xs font-mono mb-3">
+        <span class="text-emerald-400">02.</span> INTERACTIVE CLI WIDGET
+      </div>
+      <h2 class="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">
+        Arch Linux Live Console
+      </h2>
+      <p class="text-sm text-slate-400 mt-2">
+        Simulated terminal environment. Try typing commands like <code class="text-cyan-300 bg-white/5 px-1.5 py-0.5 rounded font-mono">help</code>, <code class="text-cyan-300 bg-white/5 px-1.5 py-0.5 rounded font-mono">neofetch</code>, <code class="text-cyan-300 bg-white/5 px-1.5 py-0.5 rounded font-mono">projects</code>, or <code class="text-cyan-300 bg-white/5 px-1.5 py-0.5 rounded font-mono">spbu</code>.
+      </p>
+    </div>
+
+    <!-- Terminal Window Container -->
+    <div class="rounded-2xl border border-white/10 bg-[#0b0f19] shadow-2xl overflow-hidden font-mono text-xs sm:text-sm">
+      
+      <!-- Window Top Bar -->
+      <div class="bg-[#111827] px-4 py-3 border-b border-white/10 flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <span class="w-3 h-3 rounded-full bg-rose-500/80 inline-block"></span>
+          <span class="w-3 h-3 rounded-full bg-amber-500/80 inline-block"></span>
+          <span class="w-3 h-3 rounded-full bg-emerald-500/80 inline-block"></span>
+          <span class="ml-2 text-xs text-slate-400 font-mono hidden sm:inline">bama@archlinux:~ (zsh)</span>
+        </div>
+
+        <!-- Quick Command Badges -->
+        <div class="flex items-center gap-1.5 flex-wrap">
+          <button type="button" data-cmd="help" class="quick-cmd px-2 py-0.5 rounded bg-white/5 hover:bg-cyan-500/20 text-slate-300 hover:text-cyan-300 border border-white/5 text-[11px] transition-colors">
+            help
+          </button>
+          <button type="button" data-cmd="neofetch" class="quick-cmd px-2 py-0.5 rounded bg-white/5 hover:bg-cyan-500/20 text-slate-300 hover:text-cyan-300 border border-white/5 text-[11px] transition-colors">
+            neofetch
+          </button>
+          <button type="button" data-cmd="skills" class="quick-cmd px-2 py-0.5 rounded bg-white/5 hover:bg-cyan-500/20 text-slate-300 hover:text-cyan-300 border border-white/5 text-[11px] transition-colors">
+            skills
+          </button>
+          <button type="button" data-cmd="clear" class="quick-cmd px-2 py-0.5 rounded bg-white/5 hover:bg-rose-500/20 text-slate-400 hover:text-rose-300 border border-white/5 text-[11px] transition-colors">
+            clear
+          </button>
+        </div>
+      </div>
+
+      <!-- Terminal Output Screen -->
+      <div id="terminal-screen" class="p-4 sm:p-6 space-y-3 min-h-[320px] max-h-[460px] overflow-y-auto leading-relaxed text-slate-200">
+        <div class="text-slate-400">
+          <p class="text-cyan-400 font-bold">Arch Linux (Linux 7.1.6-arch1-1-x86_64) • Interactive Shell</p>
+          <p class="text-slate-500 text-xs mt-0.5">Type <span class="text-amber-400">'help'</span> for a list of available system commands or click the shortcut buttons above.</p>
+        </div>
+
+        <div id="terminal-history" class="space-y-3">
+          <!-- Initial Output / Neofetch Default -->
+          <div class="terminal-log">
+            <div class="flex items-center gap-2 text-cyan-400">
+              <span class="text-emerald-400">bama@archlinux:~$</span>
+              <span class="text-white">neofetch</span>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-12 gap-4 mt-2 p-3 bg-black/30 rounded-lg border border-white/5">
+              <div class="sm:col-span-4 text-cyan-400 font-mono text-xs select-none whitespace-pre leading-tight">
+{`   /\\
+  /  \\
+ / /\\ \\
+/ /__\\ \\
+\\/____\\/`}
+              </div>
+              <div class="sm:col-span-8 space-y-1 text-xs text-slate-300">
+                <p><span class="text-cyan-400 font-semibold">User:</span> {profile.name} (@{profile.handle})</p>
+                <p><span class="text-cyan-400 font-semibold">Role:</span> {profile.headline}</p>
+                <p><span class="text-cyan-400 font-semibold">OS:</span> {profile.status.distro}</p>
+                <p><span class="text-cyan-400 font-semibold">Uptime:</span> {profile.status.uptime}</p>
+                <p><span class="text-cyan-400 font-semibold">Shell:</span> zsh 5.9 (x86_64-arch-linux-gnu)</p>
+                <p><span class="text-cyan-400 font-semibold">Focus:</span> {profile.status.currentFocus}</p>
+                <div class="flex gap-1.5 pt-2">
+                  <span class="w-3 h-3 bg-slate-800 rounded-sm"></span>
+                  <span class="w-3 h-3 bg-red-500 rounded-sm"></span>
+                  <span class="w-3 h-3 bg-emerald-500 rounded-sm"></span>
+                  <span class="w-3 h-3 bg-amber-500 rounded-sm"></span>
+                  <span class="w-3 h-3 bg-blue-500 rounded-sm"></span>
+                  <span class="w-3 h-3 bg-purple-500 rounded-sm"></span>
+                  <span class="w-3 h-3 bg-cyan-500 rounded-sm"></span>
+                  <span class="w-3 h-3 bg-white rounded-sm"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Active Input Line -->
+        <form id="terminal-form" class="flex items-center gap-2 pt-2" autocomplete="off">
+          <label for="terminal-input" class="text-emerald-400 font-bold whitespace-nowrap flex items-center gap-1">
+            <span>bama@archlinux:~$</span>
+          </label>
+          <input
+            id="terminal-input"
+            type="text"
+            aria-label="Terminal command input"
+            class="flex-1 bg-transparent text-cyan-300 focus:outline-none font-mono text-xs sm:text-sm caret-cyan-400"
+            placeholder="Type a command (e.g. help)..."
+          />
+          <button type="submit" aria-label="Run command" class="text-slate-500 hover:text-cyan-400 p-1">
+            <CornerDownLeft class="w-3.5 h-3.5" />
+          </button>
+        </form>
+
+      </div>
+
+      <!-- Status Bar Footer -->
+      <div class="bg-[#0e131f] px-4 py-2 border-t border-white/5 flex flex-wrap items-center justify-between text-[11px] text-slate-500 font-mono">
+        <div class="flex items-center gap-3">
+          <span class="flex items-center gap-1 text-emerald-400">
+            <span class="w-2 h-2 rounded-full bg-emerald-400"></span> Live Mode
+          </span>
+          <span>Status: Normal (0.02, 0.05, 0.00)</span>
+        </div>
+        <div>
+          <span>Press [Up]/[Down] for command history</span>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<script>
+  const form = document.getElementById('terminal-form') as HTMLFormElement;
+  const input = document.getElementById('terminal-input') as HTMLInputElement;
+  const historyContainer = document.getElementById('terminal-history') as HTMLDivElement;
+  const screen = document.getElementById('terminal-screen') as HTMLDivElement;
+  const quickButtons = document.querySelectorAll('.quick-cmd');
+
+  const commandHistory: string[] = [];
+  let historyIndex = -1;
+
+  const COMMANDS: Record<string, string> = {
+    help: `
+<div class="p-3 bg-black/40 rounded border border-white/5 space-y-1 text-xs">
+  <p class="text-cyan-400 font-bold mb-2">Available System Commands:</p>
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-slate-300 font-mono">
+    <div><span class="text-amber-400 font-semibold">neofetch</span>: Display system info & specs</div>
+    <div><span class="text-amber-400 font-semibold">projects</span>: List featured & top projects</div>
+    <div><span class="text-amber-400 font-semibold">skills</span>: Summary of tech competencies</div>
+    <div><span class="text-amber-400 font-semibold">contact</span>: Reach out channels (Email/GH)</div>
+    <div><span class="text-amber-400 font-semibold">whoami</span>: Display bio & credentials</div>
+    <div><span class="text-amber-400 font-semibold">uptime</span>: View mock server uptime stats</div>
+    <div><span class="text-amber-400 font-semibold">spbu</span>: 🎸 Trigger SPBU Band Easter Egg</div>
+    <div><span class="text-amber-400 font-semibold">clear</span>: Clear terminal console screen</div>
+  </div>
+</div>`,
+    neofetch: `
+<div class="grid grid-cols-1 sm:grid-cols-12 gap-4 p-3 bg-black/30 rounded-lg border border-white/5 text-xs">
+  <div class="sm:col-span-4 text-cyan-400 font-mono select-none whitespace-pre leading-tight">
+   /\\
+  /  \\
+ / /\\ \\
+/ /__\\ \\
+\\/____\\/
+  </div>
+  <div class="sm:col-span-8 space-y-1 text-slate-300">
+    <p><span class="text-cyan-400 font-semibold">User:</span> Nabil Aswangga Hugobama (@Lidiman)</p>
+    <p><span class="text-cyan-400 font-semibold">OS:</span> Arch Linux x86_64</p>
+    <p><span class="text-cyan-400 font-semibold">Kernel:</span> 7.1.6-arch1-1</p>
+    <p><span class="text-cyan-400 font-semibold">Uptime:</span> 99.98% (24 days, 6 hours)</p>
+    <p><span class="text-cyan-400 font-semibold">School:</span> SMK Telkom Sidoarjo (SIJA)</p>
+    <p><span class="text-cyan-400 font-semibold">Interests:</span> DevOps, Kubernetes, ESP32, Indie Rock</p>
+  </div>
+</div>`,
+    projects: `
+<div class="p-3 bg-black/40 rounded border border-white/5 space-y-2 text-xs">
+  <p class="text-cyan-400 font-bold">Featured Projects:</p>
+  <ul class="space-y-1.5 text-slate-300 font-mono">
+    <li>• <span class="text-emerald-400 font-bold">Asentinel</span> - Go/Docker observability & host sentinel</li>
+    <li>• <span class="text-emerald-400 font-bold">BandBuddy</span> - Smart setlist & rehearsal management for bands</li>
+    <li>• <span class="text-emerald-400 font-bold">NeuroMotion</span> - ESP32-S3 edge-AI microsleep warning</li>
+    <li>• <span class="text-emerald-400 font-bold">Docker-Optimize</span> - Multi-stage slim image blueprints</li>
+    <li>• <span class="text-emerald-400 font-bold">Productivity-Flow</span> - High-velocity keyboard kanban workspace</li>
+  </ul>
+  <p class="text-slate-400 text-[11px] pt-1">Scroll to the Bento Showcase or Archive below for all 14 repositories.</p>
+</div>`,
+    skills: `
+<div class="p-3 bg-black/40 rounded border border-white/5 space-y-1.5 text-xs text-slate-300 font-mono">
+  <p class="text-cyan-400 font-bold">Technical Stack:</p>
+  <p><span class="text-amber-400 font-semibold">DevOps:</span> Docker, Kubernetes, Linux (Arch/Debian), GitHub Actions, Nginx</p>
+  <p><span class="text-amber-400 font-semibold">Languages:</span> TypeScript, Go, PHP/Laravel, C/C++, Python, SQL</p>
+  <p><span class="text-amber-400 font-semibold">Embedded:</span> ESP32-S3/C3, FreeRTOS, Arduino, MIDI protocol</p>
+  <p><span class="text-amber-400 font-semibold">Tools:</span> Git, Neovim, Cloudflare Pages, Postman</p>
+</div>`,
+    contact: `
+<div class="p-3 bg-black/40 rounded border border-white/5 space-y-1 text-xs text-slate-300 font-mono">
+  <p class="text-cyan-400 font-bold">Contact Channels:</p>
+  <p>• Email: <a href="mailto:bamaground@gmail.com" class="text-cyan-300 hover:underline">bamaground@gmail.com</a></p>
+  <p>• GitHub: <a href="https://github.com/Lidiman" target="_blank" class="text-cyan-300 hover:underline">https://github.com/Lidiman</a></p>
+  <p>• Instagram: <a href="https://instagram.com/never.bama" target="_blank" class="text-pink-400 hover:underline">@never.bama</a></p>
+</div>`,
+    whoami: `
+<div class="p-3 bg-black/40 rounded border border-white/5 text-xs text-slate-300 space-y-1">
+  <p class="text-cyan-400 font-bold">Nabil Aswangga Hugobama (Bama)</p>
+  <p>DevOps & Cloud-Native builder, SIJA student at SMK Telkom Sidoarjo, and lead guitarist of indie band SPBU.</p>
+</div>`,
+    uptime: `
+<div class="p-3 bg-black/40 rounded border border-white/5 text-xs text-slate-300 font-mono">
+  <p><span class="text-emerald-400">13:42:00 up 24 days, 6:18, 1 user, load average: 0.02, 0.05, 0.00</span></p>
+  <p class="text-slate-400 mt-1">Memory: 4.2GiB / 15.8GiB | Tasks: 184 total, 1 running</p>
+</div>`,
+    spbu: `
+<div class="p-3 bg-purple-950/40 rounded border border-purple-500/30 text-xs text-purple-200 space-y-1.5 font-mono">
+  <p class="text-purple-300 font-bold flex items-center gap-1.5">
+    🎸 SPBU Band Sound Check: "Alternative Rock from Sidoarjo"
+  </p>
+  <p>Tone: Overdrive Crunch • BPM: 135 • Tuning: Standard E</p>
+  <p class="text-slate-300 italic">"Latihan di studio, ngoding di Arch Linux, deploy ke cloud."</p>
+  <p class="text-amber-300 text-[11px]">Tip: Check the SPBU Audio Lab section below for live Web Audio synth!</p>
+</div>`,
+  };
+
+  function executeCommand(cmd: string) {
+    const cleanCmd = cmd.trim().toLowerCase();
+    if (!cleanCmd) return;
+
+    // Push to history
+    commandHistory.push(cmd);
+    historyIndex = commandHistory.length;
+
+    if (cleanCmd === 'clear') {
+      historyContainer.innerHTML = '';
+      return;
+    }
+
+    const logEntry = document.createElement('div');
+    logEntry.className = 'terminal-log space-y-1.5';
+
+    const cmdHeader = document.createElement('div');
+    cmdHeader.className = 'flex items-center gap-2 text-cyan-400';
+    cmdHeader.innerHTML = `
+      <span class="text-emerald-400 font-bold">bama@archlinux:~$</span>
+      <span class="text-white">${document.createTextNode(cmd).textContent}</span>
+    `;
+    logEntry.appendChild(cmdHeader);
+
+    const resultDiv = document.createElement('div');
+    resultDiv.className = 'text-xs text-slate-300';
+
+    if (COMMANDS[cleanCmd]) {
+      resultDiv.innerHTML = COMMANDS[cleanCmd];
+    } else {
+      resultDiv.innerHTML = `
+        <div class="p-2.5 bg-rose-950/30 rounded border border-rose-500/20 text-rose-300 text-xs font-mono">
+          <p>zsh: command not found: <span class="font-bold text-white">${document.createTextNode(cleanCmd).textContent}</span></p>
+          <p class="text-slate-400 text-[11px] mt-1">Type <span class="text-amber-400 font-semibold">'help'</span> to see all supported commands.</p>
+        </div>
+      `;
+    }
+
+    logEntry.appendChild(resultDiv);
+    historyContainer.appendChild(logEntry);
+
+    // Scroll to bottom
+    screen.scrollTop = screen.scrollHeight;
+  }
+
+  if (form && input) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const val = input.value;
+      if (val) {
+        executeCommand(val);
+        input.value = '';
+      }
+    });
+
+    input.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        if (commandHistory.length > 0 && historyIndex > 0) {
+          historyIndex--;
+          input.value = commandHistory[historyIndex];
+        }
+      } else if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        if (historyIndex < commandHistory.length - 1) {
+          historyIndex++;
+          input.value = commandHistory[historyIndex];
+        } else {
+          historyIndex = commandHistory.length;
+          input.value = '';
+        }
+      }
+    });
+  }
+
+  quickButtons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const cmd = btn.getAttribute('data-cmd');
+      if (cmd) {
+        executeCommand(cmd);
+      }
+    });
+  });
+</script>

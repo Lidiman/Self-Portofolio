@@ -1,0 +1,295 @@
+---
+import { getCollection } from 'astro:content';
+import { Search, Github, Star, FolderGit2, X, RefreshCw } from 'lucide-astro';
+
+const allRepos = await getCollection('repositories');
+const sortedRepos = allRepos.sort((a, b) => (b.data.stars || 0) - (a.data.stars || 0));
+
+const categories = [
+  'All',
+  'DevOps/Cloud',
+  'C/C++',
+  'PHP/Laravel',
+  'TypeScript/JS',
+  'Python',
+  'Mobile/Flutter',
+];
+---
+
+<section id="archive" class="py-16 md:py-24 border-t border-white/5 relative">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Section Header -->
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+      <div>
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-cyan-950/40 border border-cyan-500/20 text-cyan-400 text-xs font-mono mb-3">
+          <span class="text-emerald-400">03.</span> REPOSITORY ARCHIVE
+        </div>
+        <h2 class="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">
+          Repository Explorer
+        </h2>
+        <p class="text-sm sm:text-base text-slate-400 mt-2">
+          Explore all open-source repositories, system blueprints, and experimentations by @Lidiman.
+        </p>
+      </div>
+
+      <!-- Live Counter -->
+      <div class="flex items-center gap-2 text-xs font-mono text-slate-400 bg-white/5 px-3 py-1.5 rounded-lg border border-white/10 w-fit">
+        <FolderGit2 class="w-4 h-4 text-cyan-400" />
+        <span>Showing <strong id="repo-count" class="text-white">{sortedRepos.length}</strong> of {sortedRepos.length} repositories</span>
+      </div>
+    </div>
+
+    <!-- Search & Filter Controls -->
+    <div class="space-y-4 mb-8">
+      <!-- Search Input -->
+      <div class="relative">
+        <label for="repo-search" class="sr-only">Search repositories</label>
+        <Search class="w-4 h-4 text-slate-400 absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none" />
+        <input
+          id="repo-search"
+          type="text"
+          placeholder="Search by repo name, tech stack, or description (e.g. Docker, Go, ESP32, Laravel)..."
+          class="w-full bg-[#0b0f19] border border-white/10 focus:border-cyan-500 rounded-xl pl-11 pr-10 py-3 text-sm text-white placeholder:text-slate-500 focus:outline-none focus:ring-1 focus:ring-cyan-500 transition-all font-mono"
+        />
+        <button
+          id="clear-search-btn"
+          type="button"
+          aria-label="Clear search query"
+          class="hidden absolute right-3 top-1/2 -translate-y-1/2 p-1 text-slate-400 hover:text-white rounded-md hover:bg-white/5"
+        >
+          <X class="w-4 h-4" />
+        </button>
+      </div>
+
+      <!-- Filter Category Buttons -->
+      <div class="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none" id="category-filters">
+        {categories.map((cat, idx) => (
+          <button
+            type="button"
+            data-category={cat}
+            class={`category-btn px-3 py-1.5 rounded-lg text-xs font-mono transition-all whitespace-nowrap focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 ${
+              idx === 0
+                ? 'bg-cyan-500 text-slate-950 font-bold shadow-md shadow-cyan-500/20 active-cat'
+                : 'bg-white/5 text-slate-300 hover:bg-white/10 hover:text-white border border-white/5'
+            }`}
+          >
+            {cat}
+          </button>
+        ))}
+      </div>
+    </div>
+
+    <!-- Repositories Grid Container -->
+    <div
+      id="repos-grid"
+      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 transition-opacity duration-200"
+    >
+      {sortedRepos.map((repo) => (
+        <div
+          class="repo-card bento-card rounded-xl p-5 flex flex-col justify-between"
+          data-name={repo.data.name.toLowerCase()}
+          data-category={repo.data.category}
+          data-language={repo.data.language.toLowerCase()}
+          data-description={repo.data.description.toLowerCase()}
+          data-tags={repo.data.tags.map((t) => t.toLowerCase()).join(' ')}
+        >
+          <div>
+            <!-- Top bar -->
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <div class="flex items-center gap-2">
+                <FolderGit2 class="w-4 h-4 text-cyan-400" />
+                <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-white/5 text-slate-400 border border-white/5">
+                  {repo.data.category}
+                </span>
+              </div>
+              <div class="flex items-center gap-1 text-amber-400 text-xs font-mono">
+                <Star class="w-3.5 h-3.5 fill-amber-400/20" />
+                <span>{repo.data.stars || 0}</span>
+              </div>
+            </div>
+
+            <!-- Repo Title & Link -->
+            <a
+              href={repo.data.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-base font-bold text-white hover:text-cyan-400 transition-colors inline-flex items-center gap-1.5 group"
+            >
+              {repo.data.name}
+              <Github class="w-3.5 h-3.5 text-slate-500 group-hover:text-cyan-400 transition-colors" />
+            </a>
+
+            <!-- Description -->
+            <p class="text-xs text-slate-300/90 line-clamp-3 leading-relaxed mt-2 mb-4">
+              {repo.data.description}
+            </p>
+          </div>
+
+          <!-- Bottom: Language & Tags -->
+          <div class="pt-3 border-t border-white/5 flex flex-col gap-2">
+            <div class="flex items-center justify-between text-xs font-mono">
+              <span class="flex items-center gap-1.5 text-slate-300">
+                <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
+                {repo.data.language}
+              </span>
+              <a
+                href={repo.data.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-[11px] text-cyan-400 hover:underline"
+              >
+                View Code &rarr;
+              </a>
+            </div>
+            
+            <div class="flex flex-wrap gap-1">
+              {repo.data.tags.slice(0, 4).map((t) => (
+                <span class="text-[9px] font-mono px-1.5 py-0.5 rounded bg-white/5 text-slate-400">
+                  #{t}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Empty State (4-state compliance) -->
+    <div
+      id="empty-state"
+      class="hidden flex-col items-center justify-center py-16 px-4 text-center rounded-2xl border border-white/10 bg-[#0b0f19] space-y-4"
+    >
+      <div class="p-4 rounded-full bg-white/5 text-slate-400">
+        <Search class="w-8 h-8 text-cyan-400" />
+      </div>
+      <div class="space-y-1">
+        <h3 class="text-lg font-bold text-white">No matching repositories found</h3>
+        <p class="text-xs sm:text-sm text-slate-400 max-w-sm">
+          No repositories match your current filter or search criteria. Try a different keyword or reset filters.
+        </p>
+      </div>
+      <button
+        id="reset-filter-btn"
+        type="button"
+        class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-cyan-500 text-slate-950 font-medium text-xs font-mono hover:bg-cyan-400 transition-colors"
+      >
+        <RefreshCw class="w-3.5 h-3.5" />
+        Reset Filters
+      </button>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  const searchInput = document.getElementById('repo-search') as HTMLInputElement;
+  const clearBtn = document.getElementById('clear-search-btn') as HTMLButtonElement;
+  const filterBtns = document.querySelectorAll('.category-btn');
+  const repoCards = document.querySelectorAll('.repo-card') as NodeListOf<HTMLElement>;
+  const emptyState = document.getElementById('empty-state') as HTMLDivElement;
+  const repoCount = document.getElementById('repo-count') as HTMLElement;
+  const resetBtn = document.getElementById('reset-filter-btn') as HTMLButtonElement;
+
+  let activeCategory = 'All';
+  let searchQuery = '';
+
+  function filterRepositories() {
+    let visibleCount = 0;
+    const query = searchQuery.trim().toLowerCase();
+
+    repoCards.forEach((card) => {
+      const name = card.dataset.name || '';
+      const cat = card.dataset.category || '';
+      const lang = card.dataset.language || '';
+      const desc = card.dataset.description || '';
+      const tags = card.dataset.tags || '';
+
+      const matchCategory = activeCategory === 'All' || cat === activeCategory;
+      const matchSearch =
+        !query ||
+        name.includes(query) ||
+        lang.includes(query) ||
+        desc.includes(query) ||
+        tags.includes(query);
+
+      if (matchCategory && matchSearch) {
+        card.style.display = 'flex';
+        visibleCount++;
+      } else {
+        card.style.display = 'none';
+      }
+    });
+
+    if (repoCount) {
+      repoCount.textContent = String(visibleCount);
+    }
+
+    if (emptyState) {
+      if (visibleCount === 0) {
+        emptyState.classList.remove('hidden');
+        emptyState.classList.add('flex');
+      } else {
+        emptyState.classList.add('hidden');
+        emptyState.classList.remove('flex');
+      }
+    }
+  }
+
+  if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+      searchQuery = (e.target as HTMLInputElement).value;
+      if (clearBtn) {
+        if (searchQuery.length > 0) {
+          clearBtn.classList.remove('hidden');
+        } else {
+          clearBtn.classList.add('hidden');
+        }
+      }
+      filterRepositories();
+    });
+  }
+
+  if (clearBtn && searchInput) {
+    clearBtn.addEventListener('click', () => {
+      searchInput.value = '';
+      searchQuery = '';
+      clearBtn.classList.add('hidden');
+      filterRepositories();
+      searchInput.focus();
+    });
+  }
+
+  filterBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach((b) => {
+        b.className = 'category-btn px-3 py-1.5 rounded-lg text-xs font-mono transition-all whitespace-nowrap bg-white/5 text-slate-300 hover:bg-white/10 hover:text-white border border-white/5';
+      });
+
+      btn.className = 'category-btn px-3 py-1.5 rounded-lg text-xs font-mono transition-all whitespace-nowrap bg-cyan-500 text-slate-950 font-bold shadow-md shadow-cyan-500/20 active-cat';
+
+      activeCategory = btn.getAttribute('data-category') || 'All';
+      filterRepositories();
+    });
+  });
+
+  if (resetBtn && searchInput) {
+    resetBtn.addEventListener('click', () => {
+      searchInput.value = '';
+      searchQuery = '';
+      if (clearBtn) clearBtn.classList.add('hidden');
+
+      filterBtns.forEach((b) => {
+        const cat = b.getAttribute('data-category');
+        if (cat === 'All') {
+          b.className = 'category-btn px-3 py-1.5 rounded-lg text-xs font-mono transition-all whitespace-nowrap bg-cyan-500 text-slate-950 font-bold shadow-md shadow-cyan-500/20 active-cat';
+        } else {
+          b.className = 'category-btn px-3 py-1.5 rounded-lg text-xs font-mono transition-all whitespace-nowrap bg-white/5 text-slate-300 hover:bg-white/10 hover:text-white border border-white/5';
+        }
+      });
+
+      activeCategory = 'All';
+      filterRepositories();
+    });
+  }
+</script>

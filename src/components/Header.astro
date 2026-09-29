@@ -1,0 +1,109 @@
+---
+import { Github, Terminal, Menu, X } from 'lucide-astro';
+import profile from '../data/profile.json';
+---
+
+<header class="sticky top-0 z-40 w-full border-b border-white/5 bg-[#090d16]/80 backdrop-blur-xl">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+    <!-- Brand -->
+    <a href="#" class="flex items-center gap-3 group focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 rounded-lg p-1">
+      <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-cyan-500 to-emerald-400 flex items-center justify-center text-slate-950 font-mono font-bold text-sm shadow-md group-hover:scale-105 transition-transform">
+        B
+      </div>
+      <div class="flex flex-col">
+        <span class="font-mono text-sm font-semibold tracking-tight text-white group-hover:text-cyan-400 transition-colors">
+          {profile.handle}<span class="text-cyan-400">.dev</span>
+        </span>
+        <span class="text-[10px] text-slate-400 font-mono flex items-center gap-1.5">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+          Arch Linux
+        </span>
+      </div>
+    </a>
+
+    <!-- Desktop Nav -->
+    <nav class="hidden md:flex items-center gap-1 lg:gap-2 text-sm font-medium text-slate-300">
+      <a href="#projects" class="px-3 py-1.5 rounded-md hover:text-white hover:bg-white/5 transition-colors focus-visible:ring-2 focus-visible:ring-cyan-400">
+        Projects
+      </a>
+      <a href="#terminal" class="px-3 py-1.5 rounded-md hover:text-white hover:bg-white/5 transition-colors flex items-center gap-1.5 focus-visible:ring-2 focus-visible:ring-cyan-400">
+        <Terminal class="w-3.5 h-3.5 text-cyan-400" />
+        Terminal
+      </a>
+      <a href="#archive" class="px-3 py-1.5 rounded-md hover:text-white hover:bg-white/5 transition-colors focus-visible:ring-2 focus-visible:ring-cyan-400">
+        Archive
+      </a>
+      <a href="#skills" class="px-3 py-1.5 rounded-md hover:text-white hover:bg-white/5 transition-colors focus-visible:ring-2 focus-visible:ring-cyan-400">
+        Skills
+      </a>
+      <a href="#experience" class="px-3 py-1.5 rounded-md hover:text-white hover:bg-white/5 transition-colors focus-visible:ring-2 focus-visible:ring-cyan-400">
+        Experience
+      </a>
+      <a href="#music-lab" class="px-3 py-1.5 rounded-md hover:text-white hover:bg-white/5 transition-colors text-amber-400 hover:text-amber-300 focus-visible:ring-2 focus-visible:ring-amber-400">
+        SPBU Lab 🎸
+      </a>
+    </nav>
+
+    <!-- Right Action -->
+    <div class="flex items-center gap-3">
+      <a
+        href={profile.contacts.github}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="GitHub Profile @Lidiman"
+        class="flex items-center gap-2 px-3 py-1.5 text-xs font-mono font-medium text-slate-200 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-cyan-500/30 rounded-lg transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
+      >
+        <Github class="w-4 h-4 text-cyan-400" />
+        <span class="hidden sm:inline">@{profile.handle}</span>
+      </a>
+
+      <!-- Mobile Menu Toggle Button -->
+      <button
+        id="mobile-menu-btn"
+        type="button"
+        aria-label="Toggle Navigation Menu"
+        aria-expanded="false"
+        class="md:hidden p-2 rounded-lg bg-white/5 border border-white/10 text-slate-300 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
+      >
+        <Menu id="menu-icon-open" class="w-5 h-5 block" />
+        <X id="menu-icon-close" class="w-5 h-5 hidden" />
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Dropdown Menu -->
+  <div id="mobile-menu" class="hidden md:hidden border-t border-white/5 bg-[#090d16]/95 px-4 py-4 space-y-2">
+    <a href="#projects" class="block px-3 py-2 rounded-md text-slate-200 hover:bg-white/5">Projects</a>
+    <a href="#terminal" class="block px-3 py-2 rounded-md text-slate-200 hover:bg-white/5">Terminal Widget</a>
+    <a href="#archive" class="block px-3 py-2 rounded-md text-slate-200 hover:bg-white/5">Repository Archive</a>
+    <a href="#skills" class="block px-3 py-2 rounded-md text-slate-200 hover:bg-white/5">Technical Skills</a>
+    <a href="#experience" class="block px-3 py-2 rounded-md text-slate-200 hover:bg-white/5">Experience & Background</a>
+    <a href="#music-lab" class="block px-3 py-2 rounded-md text-amber-400 hover:bg-white/5">SPBU Audio Lab 🎸</a>
+  </div>
+</header>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  const openIcon = document.getElementById('menu-icon-open');
+  const closeIcon = document.getElementById('menu-icon-close');
+
+  if (btn && menu && openIcon && closeIcon) {
+    btn.addEventListener('click', () => {
+      const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!isExpanded));
+      menu.classList.toggle('hidden');
+      openIcon.classList.toggle('hidden');
+      closeIcon.classList.toggle('hidden');
+    });
+
+    menu.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        menu.classList.add('hidden');
+        openIcon.classList.remove('hidden');
+        closeIcon.classList.add('hidden');
+        btn.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+</script>
